@@ -1,0 +1,38 @@
+.auth-container{
+    width: 90%;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+}
+
+.form-container{
+   /* width: 100%; */
+   flex: 1;
+}
+
+@media screen and (max-width:992px){
+    .auth-container{
+    width: 100%;
+    }
+.auth-container .img{
+    width: 100%;
+}
+.auth-container .img{
+    width: 100%;
+}
+.form-container{
+   /* width: 100%; */
+   flex: .5;
+}
+}
+@media screen and (max-width:767px){
+   
+
+.form-container{
+   /* width: 100%; */
+   flex: 1;
+}
+}

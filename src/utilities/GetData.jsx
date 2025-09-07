@@ -1,17 +1,18 @@
 
 import { useEffect, useState } from "react";
 import api from "./api";
+import axios from "axios";
 
-export function GetData(url,data){
-    const [response,setResponse]=useState([])
+export function GetData(url){
+    const [data,setData]=useState([])
     const [loading,setLoading]=useState(false)
     const [error,setError]=useState(null)
     useEffect(()=>{
         const getData=async ()=>{
             setLoading(true)
             try {
-                   const {data}=await api.post(url,data);
-                   setResponse(data)
+                   const {data}=await axios.get(url);
+                   setData(data)
             } catch (err) {
                 setError(err.message)
             }finally{
@@ -20,6 +21,6 @@ export function GetData(url,data){
          
         }
         getData();
-    },[url,data])
-    return {response,error,loading}
+    },[url])
+    return {data,error,loading}
 }

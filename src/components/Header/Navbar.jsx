@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
+import { useContext } from "react";
+import { AuthContext } from './../../context/AuthContext';
+import LogoutButton from './../../auth/Logout';
+
 
 function Navbar() {
-    const [isLog,setIsLog]=useState(JSON.parse(localStorage.getItem("isLog")))
-    useEffect(()=>{
-       setIsLog(JSON.parse(localStorage.getItem("isLog")))
-    },[])
+   
+    const { userInfo } = useContext(AuthContext);
+    
+   
     return ( 
        <nav className="navbar navbar-expand-lg bg-body-tertiary ">
             <div className="container" >
@@ -25,7 +28,10 @@ function Navbar() {
                             <NavLink className="nav-link " aria-current="page" to="/contact">Contact</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/user/register">SignUp</NavLink>
+                             {userInfo?.isLoged ?
+                                <li className="nav-item" title="Logout"><LogoutButton/></li> :
+                                <NavLink className="nav-link" to="/user/register">SignUp</NavLink>
+                           }
                         </li>
                     </ul>
                     <div className=" d-lg-flex ms-auto ">
@@ -35,7 +41,7 @@ function Navbar() {
                             <i className="fa-solid fa-magnifying-glass position-absolute" style={{right:"15px",top:"12px"}}></i>
                         </form>
                         <ul className=" navbar-nav mb-2 mb-lg-0 flex-row gap-5 gap-lg-0">
-                            <li className="nav-item">
+                            <li className="nav-item" title="Wishlist">
                                 <NavLink className="nav-link" aria-current="page" to="/wishlist"><i className="fa-solid fa-heart"></i></NavLink>
                             </li>
                             <li className="nav-item">
@@ -44,12 +50,7 @@ function Navbar() {
                                 <span className="position-absolute top-0 text-danger fw-bold">2</span>
                                 </NavLink>
                             </li>
-                            {isLog? <>
-                                <li className="nav-item"><NavLink className="nav-link " aria-current="page" to="user/profile"><i className="fa-solid fa-user"></i></NavLink></li>
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" to="/logout"><i className="fa-solid fa-right-from-bracket"></i></NavLink>
-                                </li>
-                             </>:" "}
+                            {userInfo?.isLoged && <li className="nav-item" title="Profile"><NavLink className="nav-link " aria-current="page" to="user/profile"><i className="fa-solid fa-user"></i></NavLink></li>}
                         </ul>
                     </div>
                    

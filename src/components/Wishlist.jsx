@@ -1,5 +1,10 @@
+import GetLocation from "../utilities/GetLocation";
+
 function Wishlist() {
-    return ( <h1>wishlist</h1> );
+    return (<>
+      <GetLocation/>
+     <h1>wishlist</h1> 
+    </>);
 }
 
 export default Wishlist;
