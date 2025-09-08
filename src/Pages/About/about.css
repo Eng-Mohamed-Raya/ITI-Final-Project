@@ -33,7 +33,10 @@
 
 }
 
-
+.swiper-pagination-bullet{
+    background-color: var(  --text-secondary-color) !important; 
+    opacity: 1 !important;
+}
 .swiper-pagination-bullet-active {
-  background-color: red !important; 
+  background-color: var(--secondary-color) !important; 
 }
