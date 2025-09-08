@@ -4,9 +4,9 @@ import { Link, useLocation } from "react-router";
 function GetLocation() {
    const location=useLocation(); 
    let path=location.pathname.split('/');
-   console.log(path);
-   console.log(location.pathname);
-   return (<div >
+//    console.log(path);
+//    console.log(location.pathname);
+   return (<div className="get-location">
             {path.map((p,index)=>{
                 if(index===0){
                     return <span key={index}  to={'/'} style={{color:"var(--text-third-color)"}}>home</span>

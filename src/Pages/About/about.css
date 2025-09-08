@@ -1,0 +1,39 @@
+.about .hero{   
+    width: 92%;
+}
+.about .img{
+    width: 100%;
+    margin-bottom: 20px;
+}
+ .about .content{
+        text-wrap: balance;
+    }
+@media  (max-width: 992px){
+    .about .hero{   
+       width: 90%;
+       margin: auto;
+    }
+    .about .content{
+        padding: 0 10px;
+    }
+    .about .img img{
+    width: 100%;
+    object-fit: cover;}
+    
+}
+@media  (max-width: 768px){
+    .about .hero{   
+       width: 100%;
+       margin: auto;
+    }
+    .about .content{
+        padding: 0 10px;
+    }
+    
+
+}
+
+
+.swiper-pagination-bullet-active {
+  background-color: red !important; 
+}

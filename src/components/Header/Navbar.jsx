@@ -29,7 +29,7 @@ function Navbar() {
                         </li>
                         <li className="nav-item">
                              {userInfo?.isLoged ?
-                                <li className="nav-item" title="Logout"><LogoutButton/></li> :
+                              <LogoutButton/> :
                                 <NavLink className="nav-link" to="/user/register">SignUp</NavLink>
                            }
                         </li>
