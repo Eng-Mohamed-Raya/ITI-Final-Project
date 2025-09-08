@@ -1,0 +1,37 @@
+.voucher-swiper .swiper-pagination {
+  position: absolute;
+  bottom:12%;      
+}
+.voucher-swiper{
+    height: 600px;
+}
+.voucher-img img{
+    width:90% !important;
+}
+
+@media (max-width: 768px){
+  .voucher-swiper{
+    height: 800px;
+}
+.voucher-img{
+    width: 100%;
+}
+}
+.category-card{
+  transition: all 0.3s ease;
+}
+.category-card:hover{
+  background-color: var(--secondary-color);
+  cursor: pointer;
+  color: var(--text-secondary-color);
+}
+.section-title{
+  border-left: 20px solid var(--secondary-color);
+  padding: 10px;
+  color: var(--secondary-color);
+}
+.feat{
+
+    background-color: black;
+
+}
