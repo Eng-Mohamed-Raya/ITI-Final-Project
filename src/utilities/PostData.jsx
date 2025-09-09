@@ -1,25 +1,32 @@
+// utilities/PostData.js
+import { useContext, useState } from "react";
+import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
-import { useEffect, useState } from "react";
-import api from "./api";
+export function usePostData() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const { userInfo } = useContext(AuthContext);
 
-export function PostData(url,data){
-    const [response,setResponse]=useState([])
-    const [loading,setLoading]=useState(false)
-    const [error,setError]=useState(null)
-    useEffect(()=>{
-        const getData=async ()=>{
-            setLoading(true)
-            try {
-                   const {data}=await api.post(url,data);
-                   setResponse(data)
-            } catch (err) {
-                setError(err.message)
-            }finally{
-                 setLoading(false)
-            }
-         
-        }
-        getData();
-    },[url,data])
-    return {response,error,loading}
+  const postData = async (url, body) => {
+    setLoading(true);
+    try {
+        
+      const { data } = await axios.post(url, body, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      setData(data);
+      return data; 
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { data, loading, error, postData };
 }

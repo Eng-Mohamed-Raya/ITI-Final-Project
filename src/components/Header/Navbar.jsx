@@ -2,12 +2,13 @@ import { Link, NavLink } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from './../../context/AuthContext';
 import LogoutButton from './../../auth/Logout';
+import { ProductContext } from "../../context/ProductContext";
 
 
 function Navbar() {
    
     const { userInfo } = useContext(AuthContext);
-    
+    const {wishlistData}=useContext(ProductContext)
    
     return ( 
        <nav className="navbar navbar-expand-lg bg-body-tertiary ">
@@ -41,8 +42,9 @@ function Navbar() {
                             <i className="fa-solid fa-magnifying-glass position-absolute" style={{right:"15px",top:"12px"}}></i>
                         </form>
                         <ul className=" navbar-nav mb-2 mb-lg-0 flex-row gap-5 gap-lg-0">
-                            <li className="nav-item" title="Wishlist">
+                            <li className="nav-item position-relative" title="Wishlist">
                                 <NavLink className="nav-link" aria-current="page" to="/wishlist"><i className="fa-solid fa-heart"></i></NavLink>
+                                <span className="position-absolute top-0 end-0 text-danger fw-bold">{wishlistData.length || 0}</span>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link cart-icon" to="/cart">

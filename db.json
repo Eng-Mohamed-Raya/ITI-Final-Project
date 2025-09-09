@@ -1,0 +1,92 @@
+{
+  "products": [
+    {
+      "id": "68b8cf137732b6e1207d86a1",
+      "name": "HP Pavilion",
+      "description": "Affordable everyday laptop",
+      "price": 1700,
+      "stock": 2,
+      "categoryId": "68b6bbcb501c221ec84596ce",
+      "discountId": null,
+      "rate": 4,
+      "images": [
+        "https://res.cloudinary.com/dweffiohi/image/upload/v1756942101/fugss6rgs1ohzjis7a8d.jpg",
+        "https://res.cloudinary.com/dweffiohi/image/upload/v1756942102/ew2njld183wf1tkpjbjd.jpg",
+        "https://res.cloudinary.com/dweffiohi/image/upload/v1756942103/jdyxxl6vvwx1mskcfluk.jpg"
+      ]
+    },
+    {
+      "id": "68b8cfe87732b6e1207d86a5",
+      "name": "Asus ROG Strix",
+      "description": "Gaming powerhouse laptop",
+      "price": 1900,
+      "stock": 8,
+      "categoryId": "68b8ad3dba184bf5f9b34f58",
+      "discountId": null,
+      "rate": 5,
+      "images": [
+        "https://res.cloudinary.com/dweffiohi/image/upload/v1756942314/n53o5f91ficm8bsoucsp.jpg",
+        "https://res.cloudinary.com/dweffiohi/image/upload/v1756942315/ddnstirhfukjailqj7o3.jpg",
+        "https://res.cloudinary.com/dweffiohi/image/upload/v1756942316/dhdrelucrrvxnbdmeeak.jpg",
+        "https://res.cloudinary.com/dweffiohi/image/upload/v1756942317/jl9s6tqnvnfdiefvf04f.jpg"
+      ]
+    }
+    
+  ],
+
+  "categories": [
+    {
+      "id": "68b6bbcb501c221ec84596ce",
+      "title": "Suzmmer Collection",
+      "description": "knife wooo",
+      "discountId": {
+        "id": "68b6be7f1c2a1f6da6b43b33",
+        "type": "percentage",
+        "value": 18,
+        "startDate": "2025-10-21T23:59:59.000Z",
+        "endDate": "2025-10-31T23:59:59.000Z"
+      },
+      "createdAt": "2025-09-02T09:41:31.268Z"
+    },
+    {
+      "id": "68b6bbef501c221ec84596d8",
+      "title": "Suzzemmer Collection",
+      "description": "knife wooo",
+      "discountId": null,
+      "createdAt": "2025-09-02T09:42:07.724Z"
+    }
+    
+  ],
+
+  "cart": {
+    "id": "68b871fa55b0641e6a8fc274",
+    "buyerID": "68b8688607eb0c05832e8744",
+    "products": [
+      {
+        "productID": "68b8692507eb0c05832e8751",
+        "quantity": 35,
+        "id": "68b871fa55b0641e6a8fc275"
+      },
+      {
+        "productID": "68b86972ae9881633341dc90",
+        "quantity": 5,
+        "id": "68b87554c2e264d473931f03"
+      }
+    ]
+  },
+
+  "orders": [
+    {
+      "id": "68b6c5a9e4be58b62397de10",
+      "buyerID": {
+        "id": "68b6b7150125206c96d16209",
+        "name": "Khaled Mahmoud",
+        "email": "kh@gmail.com"
+      },
+      "cartID": "68b6c1821880e0ba30c1203f",
+      "status": "pending",
+      "totalPrice": 26000,
+      "address": "egypt,zagx"
+    }
+  ]
+}

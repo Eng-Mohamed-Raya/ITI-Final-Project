@@ -1,17 +1,23 @@
 
-import { useEffect, useState } from "react";
-import api from "./api";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
 export function GetData(url){
     const [data,setData]=useState([])
     const [loading,setLoading]=useState(false)
     const [error,setError]=useState(null)
+      const { userInfo } = useContext(AuthContext);
     useEffect(()=>{
         const getData=async ()=>{
             setLoading(true)
             try {
-                   const {data}=await axios.get(url);
+                   const {data}=await axios.get(url ,{
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
                    setData(data)
             } catch (err) {
                 setError(err.message)

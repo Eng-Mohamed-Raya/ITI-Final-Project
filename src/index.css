@@ -22,6 +22,9 @@ font-family: "Poppins", sans-serif;
   color: var(--secondary-color) !important;
   font-weight:700 !important;
 }
+.cursor-pointer{
+  cursor: pointer;
+}
 .nav-link{
   color: var(--main-color);
   font-weight: 500;
@@ -59,4 +62,12 @@ label{
    display: none;
   }
   
+}
+
+
+.gold{
+  color: #FFD700;
+}
+.gray{
+  color: rgb(185, 185, 185);
 }
