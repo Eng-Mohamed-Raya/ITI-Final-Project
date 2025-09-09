@@ -1,0 +1,31 @@
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px; 
+}
+
+.product-card {
+  min-height: 400px;
+  background: var(--text-secondary-color);
+  overflow: hidden;
+}
+.product-img-container{
+    height: 300px !important;
+}
+.product-img-container img{
+  width: 100% !important;
+  height: 100% !important;
+}
+.product-img-container .add-to-cart{
+    transition: opacity 0.3s ease-in-out;
+}
+.product-img-container:hover .add-to-cart{
+    opacity: 1 !important;
+}
+.card-icon:hover{
+    color: white !important;
+    background-color: var(--secondary-color) !important;
+}
+
+

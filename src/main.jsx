@@ -9,12 +9,15 @@ import "swiper/css/pagination";
 import "./index.css"
 import App from './App.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
+import { ProductProvider } from './context/ProductContext.jsx';
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
    <AuthProvider>
-    <App />
+    <ProductProvider>
+      <App />
+    </ProductProvider>
   </AuthProvider>
   </StrictMode>,
 )

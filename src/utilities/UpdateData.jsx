@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import api from "./api";
 
-export function GetData(url,data){
+export function UpdateData(url,data){
     const [response,setResponse]=useState([])
     const [loading,setLoading]=useState(false)
     const [error,setError]=useState(null)

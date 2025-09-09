@@ -12,6 +12,8 @@ import LogIn from "./auth/Login.jsx";
 import Wishlist from "./components/Wishlist.jsx";
 import ProtectedRoute from "./auth/ProtectedRoute.jsx";
 import { ToastContainer } from "react-toastify";
+import Products from "./Pages/Products/Product.jsx";
+import ProductDetails from "./components/ProductDetails/ProductDetails.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +22,8 @@ function App() {
               <Route index element={<Home/>}/>
               <Route path="about" element={<About/>}/>
               <Route path="contact" element={<Contact/>}/>
+              <Route path="products" element={<Products/>}/>
+              <Route path="products/:id" element={<ProductDetails/>}/>
               <Route path="wishlist" element={<Wishlist/>}/>
               <Route path="cart" element={<h1>cart</h1>}/>
               <Route path="user">
