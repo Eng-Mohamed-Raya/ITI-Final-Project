@@ -10,14 +10,17 @@ import "./index.css"
 import App from './App.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import { ProductProvider } from './context/ProductContext.jsx';
+import { AdminProvider } from './context/AdminContext.jsx';
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
    <AuthProvider>
-    <ProductProvider>
-      <App />
-    </ProductProvider>
+    <AdminProvider>
+      <ProductProvider>
+        <App />
+      </ProductProvider>
+    </AdminProvider>
   </AuthProvider>
   </StrictMode>,
 )

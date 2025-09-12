@@ -14,6 +14,14 @@ import ProtectedRoute from "./auth/ProtectedRoute.jsx";
 import { ToastContainer } from "react-toastify";
 import Products from "./Pages/Products/Product.jsx";
 import ProductDetails from "./components/ProductDetails/ProductDetails.jsx";
+import ProtectedAdminRoute from "./auth/ProtectedAdminRoute.jsx";
+import Dashboard from "./Admin/Dashboard.jsx";
+import AdminLayout from "./Layout/AdminLayout.jsx";
+import DashProducts from "./Admin/DashProducts/DashProducts.jsx";
+import DashOrders from "./Admin/DashOrders/DashOrders.jsx";
+import DashUsers from './Admin/DashUsers/DashUsers';
+import DashMessage from "./Admin/DashMessage/DashMessage.jsx";
+import DashCategories from "./Admin/DashCategories/DashCategories.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -30,6 +38,14 @@ function App() {
                   <Route path="register" element={<Register/>}/>
                   <Route path="login" element={<LogIn/>}/>
                   <Route path="profile" element={<ProtectedRoute  rePath={"/user/register"}> <Profile/> </ProtectedRoute>}/>
+              </Route>
+              <Route path="admin" element={<AdminLayout/>}>
+                  <Route index element={<ProtectedAdminRoute  rePath={"notfound"}> <Dashboard/> </ProtectedAdminRoute>}/>
+                  <Route path="categories" element={<ProtectedAdminRoute  rePath={"notfound"}><DashCategories/> </ProtectedAdminRoute>}/>
+                  <Route path="products" element={<ProtectedAdminRoute  rePath={"notfound"}> <DashProducts/> </ProtectedAdminRoute>}/>
+                  <Route path="orders" element={<ProtectedAdminRoute  rePath={"notfound"}> <DashOrders/> </ProtectedAdminRoute>}/>
+                  <Route path="users" element={<ProtectedAdminRoute  rePath={"notfound"}> <DashUsers/> </ProtectedAdminRoute>}/>
+                  <Route path="message" element={<ProtectedAdminRoute  rePath={"notfound"}> <DashMessage/> </ProtectedAdminRoute>}/>
               </Route>
               <Route path="*" element={<NotFound/>}/>
           </Route>

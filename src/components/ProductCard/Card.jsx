@@ -4,6 +4,7 @@ import { usePostData } from './../../utilities/PostData';
 import { BASE_URL, ProductContext } from "../../context/ProductContext";
 import { toast } from "react-toastify";
 import { useContext } from "react";
+import RatingStars from "../RatingStar";
 
 function Card({_id,name,price,rate,images,children}) {
     const navigate=useNavigate()
@@ -34,11 +35,7 @@ function Card({_id,name,price,rate,images,children}) {
             <div className="d-flex gap-3">
                 <span className="text-danger">${price}</span>
                 <span>
-                    <i className="fa-solid fa-star gold"></i>
-                    <i className="fa-solid fa-star gold"></i>
-                    <i className="fa-solid fa-star gold"></i>
-                    <i className="fa-solid fa-star gray"></i>
-                    <i className="fa-solid fa-star gray"></i>
+                   <RatingStars rate={rate}/>
                 </span>
                 <span style={{color:"var(--text-third-color)"}}>({rate})</span>
             </div>

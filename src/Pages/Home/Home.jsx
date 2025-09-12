@@ -31,7 +31,7 @@ function Home() {
             {/* product component */}
                 <div className="container my-3">     
                     <div className="products-container">
-                        {data && data?.map((product,index)=>index<8 && <Card key={product._id} {...product}/>)}    
+                        {data.data && data.data?.map((product,index)=>index<8 && <Card key={product._id} {...product}/>)}    
                     </div>
                     <div className="text-center mt-5">
                         <Button name="View All Products" handelClick={()=>navigate("/products")}/>

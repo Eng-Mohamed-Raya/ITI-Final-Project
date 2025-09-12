@@ -21,7 +21,7 @@ function Wishlist() {
       console.log(data);
     }
       };
-    return (<div className="container">
+    return (<div className="container" style={{minHeight:"90vh"}}>
      
        <div className="d-flex align-items-center justify-content-between my-5">
         <h1>Wishlist ({wishlistData.length})</h1> 

@@ -29,6 +29,10 @@ function Navbar() {
                             <NavLink className="nav-link " aria-current="page" to="/contact">Contact</NavLink>
                         </li>
                         <li className="nav-item">
+                             {userInfo?.role=="ADMIN" && <NavLink className="nav-link" to="/admin">Dashboard</NavLink>
+                           }
+                        </li>
+                        <li className="nav-item">
                              {userInfo?.isLoged ?
                               <LogoutButton/> :
                                 <NavLink className="nav-link" to="/user/register">SignUp</NavLink>
@@ -44,7 +48,7 @@ function Navbar() {
                         <ul className=" navbar-nav mb-2 mb-lg-0 flex-row gap-5 gap-lg-0">
                             <li className="nav-item position-relative" title="Wishlist">
                                 <NavLink className="nav-link" aria-current="page" to="/wishlist"><i className="fa-solid fa-heart"></i></NavLink>
-                                <span className="position-absolute top-0 end-0 text-danger fw-bold">{wishlistData.length || 0}</span>
+                                <span className="position-absolute top-0 end-0 text-danger fw-bold">{wishlistData?.length || 0}</span>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link cart-icon" to="/cart">

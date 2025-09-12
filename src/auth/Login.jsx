@@ -35,7 +35,9 @@ function LogIn() {
 
             setUserInfo(newUserInfo);
                  toast.success(`Login Successfully`)
-                 navigate("/")
+                  if(newUserInfo.role=="ADMIN"){
+                    navigate("/admin")
+                 }else navigate("/")
                  
             }catch(e){
                 toast.error(`Error : ${e.response.data.message}`)
