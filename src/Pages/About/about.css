@@ -34,7 +34,7 @@
 }
 
 .swiper-pagination-bullet{
-    background-color: var(  --text-secondary-color) !important; 
+    background-color: var(   --text-third-color) !important; 
     opacity: 1 !important;
 }
 .swiper-pagination-bullet-active {

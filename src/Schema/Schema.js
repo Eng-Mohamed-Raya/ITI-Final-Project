@@ -12,3 +12,16 @@ export const logInSchema=z.object({
     email:z.email("Invalid email"),
     password:z.string("Must be add password").min(6,"Invalid Password")
 })
+
+export const AddProductSchema=z.object({
+    name: z.string().trim().min(2, "Name must be at least 2 characters"),
+    description: z.string().trim().min(10, "Description must be at least 10 characters"),
+    stock: z.coerce.number().nonnegative("Stock must be a positive number"),
+    price: z.coerce.number().positive("Price must be a positive number"),
+    rate: z.coerce.number().positive("Price must be a positive number"),
+})
+export const AddCategorySchema=z.object({
+    title: z.string().trim().min(2, "Title must be at least 2 characters"),
+    description: z.string().trim().min(10, "Description must be at least 10 characters"),
+ 
+})

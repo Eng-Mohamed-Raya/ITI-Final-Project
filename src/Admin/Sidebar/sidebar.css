@@ -1,0 +1,14 @@
+@media screen and (max-width:992px) {
+    .sidebar-container{
+        position: relative;
+    }
+    #sidebar{
+        position: absolute;
+        width: 60vw !important;
+    }
+    .fa-bars-staggered.closeBtn{
+        position: absolute;
+        color: red;
+    }
+    
+}

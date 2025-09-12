@@ -5,7 +5,7 @@ function Header() {
     return ( 
     <header>
         <Navbar/>
-        <hr />
+        <hr style={{margin:"0"}}/>
     </header> );
 }
 

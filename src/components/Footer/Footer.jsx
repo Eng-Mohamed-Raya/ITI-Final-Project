@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 function Footer() {
   return (
-    <footer className="bg-dark mt-4 " style={{ minHeight: "40vh" }}>
+    <footer className="bg-dark" style={{ minHeight: "40vh" }}>
       <div className="container py-5">
         <div className="row ">
          

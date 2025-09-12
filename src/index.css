@@ -71,3 +71,10 @@ label{
 .gray{
   color: rgb(185, 185, 185);
 }
+
+.hide{
+  display: none;
+}
+li{
+  list-style: none;
+}
