@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import "./profile.css"
+import { BASE_URL } from "../../context/ProductContext";
 function Profile() {
        const [user,setUser]=useState({firstName:"",lastName:"",name:"",email:"",gender:"",address:"",image:"",currentPassword:"",newPassword:""})
     const [error,setError]=useState({name:"",email:"",gender:"male",address:"",image:""})
@@ -13,10 +14,10 @@ function Profile() {
     const [isEditabled,setIsEditabled]=useState(false)
    useEffect(()=>{
       
-        let postData=async()=>{
+        let getData=async()=>{
             try{
                 setLoading(true)
-               const {data}= await axios.get(`https://backend-gules-six-47.vercel.app/api/users/profile`,{
+               const {data}= await axios.get(`${BASE_URL}/users/profile`,{
                 headers: { Authorization: `Bearer ${userInfo?.token}`}
             });
             console.log(data.data)
@@ -27,15 +28,15 @@ function Profile() {
                 setLoading(false)
             }
         }
-        postData();
+        getData();
     },[])
     const handelSubmit=(e)=>{
         e.preventDefault();
-        let postData=async()=>{
+        let updateData=async()=>{
             try{
                 setLoading(true)
                 let {firstName,lastName,email,gender,address,image,currentPassword,newPassword}=user || {}
-                let {data}=await axios.put(`https://backend-gules-six-47.vercel.app/api/users/profile`,{firstName,lastName,email,gender,address,image,currentPassword,newPassword}, {
+                let {data}=await axios.put(`${BASE_URL}/users/profile`,{firstName,lastName,email,gender,address,image,currentPassword,newPassword}, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${userInfo.token}`,
@@ -50,7 +51,7 @@ function Profile() {
                 setLoading(false)
             }
         }
-        postData();
+        updateData();
     }
      const handelInputs=(e)=>{
         const name=e.target.name;
