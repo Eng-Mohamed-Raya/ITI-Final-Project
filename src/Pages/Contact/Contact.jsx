@@ -27,7 +27,6 @@ function Contact() {
               console.log("sssss")
             let addMsg=async()=>{
                 try {
-                    await axios.post(`http://localhost:3000/contact`,contactData,{headers: {"Content-Type": "application/json"}})
                     await axios.post(`${BASE_URL}/contact`,contactData,{headers: {"Content-Type": "application/json"}})
                     toast.success("Message sended Successfully")
                     setContactData({userName:"",email:"",phone:"",message:""})
