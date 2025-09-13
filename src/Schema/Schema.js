@@ -25,3 +25,10 @@ export const AddCategorySchema=z.object({
     description: z.string().trim().min(10, "Description must be at least 10 characters"),
  
 })
+
+export const contactSchema=z.object({
+    userName:z.string("Must be add name").trim().min(8,"Name must be at least 8 character "),
+    email:z.email("Invalid email"),
+    phone:z.string("Must be add phone number").trim().length(11,"Phone must be 11 number "),
+    message:z.string("Must be add message").trim().min(8,"Message must be at least 8 character ").max(300,"Message must be at most 300 character "),
+})
