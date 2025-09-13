@@ -12,8 +12,9 @@ function GetLocation() {
                     return <span key={index}  to={'/'} style={{color:"var(--text-third-color)"}}>home</span>
                 }
                 if(index===path.length-1){
-                     return <span key={index} className="text-black" to={location.pathname}> / {p}</span>
-                }
+                   if(path[index-1]=="products") return  <span key={index} className="text-black" to={location.pathname}> / productDetails</span>
+                   return <span key={index} className="text-black" to={location.pathname}> / {p}</span>
+                  }
                return <span key={index}  style={{color:"var(--text-third-color)"}}> / {p}</span>
                 })}
    </div>)
