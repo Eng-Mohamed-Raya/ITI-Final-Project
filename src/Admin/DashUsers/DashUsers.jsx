@@ -4,9 +4,10 @@ import Pagination from '../../components/Pagination';
 import { useDeleteData } from '../../utilities/DeleteData';
 import useConfirm from '../../components/CustomToasty/WarningConfirm';
 import { toast } from 'react-toastify';
+import Loading from '../../components/Loading';
 
 function DashUsers() {
-    const {usersData,setUsersData,usersPage,setUsersPage}=useContext(AdminContext)
+    const {usersData,setUsersData,usersPage,setUsersPage,loading}=useContext(AdminContext)
    
     
        const {deleteData}=useDeleteData()
@@ -33,7 +34,8 @@ function DashUsers() {
             <h2 className="section-title fs-3">All Users</h2>
         </div>
         <div className="overflow-x-auto">
-           { ! usersData?.data ? <h1 className='text-center'>No customers</h1> : <table class="table">
+             {loading && <Loading/>}
+           { ! usersData?.data && !loading? <h1 className='text-center'>No customers</h1> : <table class="table">
                 <thead>
                     <tr >
                         <th scope="col" style={{color:"var(--secondary-color)"}}>#</th>

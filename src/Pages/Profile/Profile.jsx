@@ -6,6 +6,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import "./profile.css"
 import { BASE_URL } from "../../context/ProductContext";
+import Loading from "../../components/Loading";
 function Profile() {
        const [user,setUser]=useState({firstName:"",lastName:"",name:"",email:"",gender:"",address:"",image:"",currentPassword:"",newPassword:""})
     const [error,setError]=useState({name:"",email:"",gender:"male",address:"",image:""})
@@ -60,6 +61,7 @@ function Profile() {
         setError({...error,[name]:""})
     }
     return ( <div className="container profile-page" style={{minHeight:"100vh"}}>
+         {loading && <Loading/>}
     <div className="d-flex align-items-center justify-content-between my-5">
         <GetLocation/>
         <div>Welcome!<span className="text-danger "> {user.firstName}</span></div>

@@ -7,6 +7,7 @@ import { BASE_URL } from './../../context/ProductContext';
 import { AuthContext } from "../../context/AuthContext";
 import Modal from "../../components/Modal";
 import { AdminContext } from "../../context/AdminContext";
+import Loading from "../../components/Loading";
 function UpdateCategory({data}) {
       const [category,setCategory]=useState({_id:"",title:"",description:""})
     const [error,setError]=useState({title:"",description:""})
@@ -71,6 +72,7 @@ const handelSubmit=(e)=>{
     }
 
     return ( <>
+     {loading && <Loading/>}
     <Modal id="updateCategory" title="Update Category" handelSendBtn={handelSubmit} >
          <div className=" px-3 px-lg-0" >
             

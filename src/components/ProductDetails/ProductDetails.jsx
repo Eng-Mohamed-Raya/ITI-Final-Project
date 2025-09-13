@@ -8,10 +8,11 @@ import { useContext, useEffect, useState } from "react";
 import { usePostData } from "../../utilities/PostData";
 import { toast } from "react-toastify/unstyled";
 import { useParams } from "react-router";
+import Loading from "../Loading";
 
 function ProductDetails() {
     const {id}=useParams()
-    const {data}=GetData(`${BASE_URL}/products/${id}`)
+    const {data,loading}=GetData(`${BASE_URL}/products/${id}`)
     const {name,description,price,stock,rate,images}=data.data || {}
     const [mainImage, setMainImage] = useState();
     const [quantity,setQuantity]=useState(1)
@@ -48,6 +49,7 @@ function ProductDetails() {
       
     }
     return ( <div className="container" style={{minHeight:"80vh"}}>
+         {loading && <Loading/>}
         <div className="container mt-5">
             <GetLocation/>
             </div> 

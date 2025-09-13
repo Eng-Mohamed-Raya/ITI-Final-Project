@@ -23,9 +23,11 @@ import DashUsers from './Admin/DashUsers/DashUsers';
 import DashMessage from "./Admin/DashMessage/DashMessage.jsx";
 import DashCategories from "./Admin/DashCategories/DashCategories.jsx";
 import BrowesByCategory from "./Pages/BrowesByCategory/BrowesByCategory.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop/>
       <Routes>
           <Route path="/" element={<Default/>}>
               <Route index element={<Home/>}/>

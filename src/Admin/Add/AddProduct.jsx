@@ -9,6 +9,7 @@ import Button from "../../components/Button";
 import { AuthContext } from "../../context/AuthContext";
 import { AdminContext } from "../../context/AdminContext";
 import Modal from "../../components/Modal";
+import Loading from "../../components/Loading";
 function AddProduct() {
       const [product,setProduct]=useState({name:"",description:"",categoryId:"",price:0,stock:0,rate:1,images:[]})
       const [images,setImages]=useState(["","",""])
@@ -70,6 +71,7 @@ const handelSubmit=(e)=>{
             setError({...error,[name]:""})
     }
     return ( <>
+     {loading && <Loading/>}
     <Modal id="addProduct" title="Add Product" handelSendBtn={handelSubmit}>
          <div className=" px-3 px-lg-0" >
             

@@ -35,7 +35,7 @@ function Navbar() {
                         <li className="nav-item">
                              {userInfo?.isLoged ?
                               <LogoutButton/> :
-                                <NavLink className="nav-link" to="/user/register">SignUp</NavLink>
+                                <NavLink className="nav-link" to="/user/login">Login</NavLink>
                            }
                         </li>
                     </ul>
@@ -46,6 +46,7 @@ function Navbar() {
                             <i className="fa-solid fa-magnifying-glass position-absolute" style={{right:"15px",top:"12px"}}></i>
                         </form>
                         <ul className=" navbar-nav mb-2 mb-lg-0 flex-row gap-5 gap-lg-0">
+                            {userInfo?.isLoged && userInfo?.role =="USER" &&  <>
                             <li className="nav-item position-relative" title="Wishlist">
                                 <NavLink className="nav-link" aria-current="page" to="/wishlist"><i className="fa-solid fa-heart"></i></NavLink>
                                 <span className="position-absolute top-0 end-0 text-danger fw-bold">{wishlistData?.length || 0}</span>
@@ -53,9 +54,10 @@ function Navbar() {
                             <li className="nav-item">
                                 <NavLink className="nav-link cart-icon" to="/cart">
                                 <i className="fa-solid fa-cart-shopping"></i>
-                                <span className="position-absolute top-0 text-danger fw-bold">2</span>
+                                <span className="position-absolute top-0 text-danger fw-bold">0</span>
                                 </NavLink>
                             </li>
+                            </>}
                             {userInfo?.isLoged && <li className="nav-item" title="Profile"><NavLink className="nav-link " aria-current="page" to="user/profile"><i className="fa-solid fa-user"></i></NavLink></li>}
                         </ul>
                     </div>

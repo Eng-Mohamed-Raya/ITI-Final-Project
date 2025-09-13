@@ -3,18 +3,18 @@ import InfoCard from './../components/InfoCard/InfoCard';
 import { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../context/AdminContext.jsx";
 import { ProductContext } from "../context/ProductContext.jsx";
+import Loading from "../components/Loading.jsx";
 
 
 function Dashboard() {
     const getContext=useContext(AdminContext)
-    const {usersData,categoriesData,contactData,ordersData}=getContext
-    const{data}=useContext(ProductContext)
+    const {usersData,categoriesData,contactData,ordersData,loading}=getContext
+    const{data,loading:productLoading}=useContext(ProductContext)
     const [userNum,setUserNum]=useState(0)
     const [categoryNum,setCategoryNum]=useState(0)
     const [productsNum,setProductsNum]=useState(0)
     const [ordersNum,setOrdersNum]=useState(0)
     const [messageNum,setMessageNum]=useState(0)
-    console.log(usersData.totalUsers);
     useEffect(()=>{
 
         setUserNum(usersData.totalUsers)
@@ -25,6 +25,7 @@ function Dashboard() {
         
     },[getContext,data])
     return ( <div className="">
+         {(loading ||productLoading) && <Loading/>}
       {/* services */}
         <div className="d-flex flex-wrap gap-4 justify-content-center justify-content-lg-start">
          <InfoCard  className="border pt-5"  value={`${categoryNum||0} Category`} img="/public/aboutImg/Service1.svg"/>

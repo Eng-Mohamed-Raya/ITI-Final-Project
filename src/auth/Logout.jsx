@@ -3,14 +3,17 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router";
 import useConfirm from "../components/CustomToasty/WarningConfirm";
 import { toast } from "react-toastify";
+import { ProductContext } from "../context/ProductContext";
 
 function LogoutButton() {
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
+      const {setWishlistData}=useContext(ProductContext)
 const confirm=useConfirm()
   const handleLogout = () => {
      logout()
      toast.success("Loged Out Successfully")
+     setWishlistData([])
      navigate("/user/login")
   };
 

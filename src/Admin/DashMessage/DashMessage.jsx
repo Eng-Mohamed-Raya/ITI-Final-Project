@@ -4,9 +4,10 @@ import { AdminContext, BASE_URL } from '../../context/AdminContext';
 import { useDeleteData } from './../../utilities/DeleteData';
 import { toast } from 'react-toastify';
 import useConfirm from '../../components/CustomToasty/WarningConfirm';
+import Loading from './../../components/Loading';
 
 function DashMessage() {
-    const {contactData,setContactData}=useContext(AdminContext)
+    const {contactData,setContactData,loading}=useContext(AdminContext)
     const confirm=useConfirm()
     const {deleteData}=useDeleteData()
    
@@ -25,11 +26,12 @@ function DashMessage() {
       };
 
     return ( <div className="container">
+         {loading && <Loading/>}
         <div className="d-flex align-items-center justify-content-between my-5">
             <h2 className="section-title fs-3">All Message</h2>
         </div>
         <div className="overflow-x-auto">
-            {!contactData?.data ? <h1 className='text-center'>Don't have a messages</h1> :
+            {!contactData?.data && !loading? <h1 className='text-center'>Don't have a messages</h1> :
             <table class="table">
             <thead>
                 <tr >

@@ -7,9 +7,10 @@ import Pagination from '../../components/Pagination';
 import AddProduct from '../Add/AddProduct';
 import { AdminContext } from '../../context/AdminContext';
 import UpdateProduct from '../Update/UpdateProduct';
+import Loading from './../../components/Loading';
 
 function DashProducts() {
-    const {data,setData,productPage,setProductPage}=useContext(ProductContext)
+    const {data,setData,productPage,setProductPage,loading}=useContext(ProductContext)
         const [updateData,setUpdateData]=useState(null)
      const {categoriesData}=useContext(AdminContext)
      const [filterCategory,setFilterCategory]=useState("all")
@@ -50,6 +51,7 @@ function DashProducts() {
         }
         
     return ( <div className="container">
+         {loading && <Loading/>}
         <div className="d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-between my-5 gap-3 ">
             <h2 className="section-title fs-3">All Products</h2>
                  <form className="d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-between  gap-2" role="search">
@@ -69,7 +71,7 @@ function DashProducts() {
              <AddProduct/>
         </div>
         <div className="overflow-x-auto">
-           { !data?.data ? <h1 className='text-center'>No products found</h1> : <table class="table">
+           { !data?.data && !loading ? <h1 className='text-center'>No products found</h1> : <table class="table">
                 <thead>
                     <tr >
                         
@@ -84,7 +86,7 @@ function DashProducts() {
                 </thead>
                 <tbody>
                     {
-                      searching()?.length && filtered().length ? filtered()?.map((product,index)=>{
+                      searching()?.length && filtered().length || loading ? filtered()?.map((product,index)=>{
                             return <tr key={product._id} className='align-middle'>
                                 <th scope="row" className="text-danger">{index+1 + (productPage-1)*10}</th>
                                     <td>

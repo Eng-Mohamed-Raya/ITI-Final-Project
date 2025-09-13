@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { toast} from "react-toastify";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
+import Loading from './../components/Loading';
 function LogIn() {
     const [user,setUser]=useState({email:"",password:""})
     const [error,setError]=useState({email:"",password:""})
@@ -58,6 +59,7 @@ function LogIn() {
 
     const navigate=useNavigate()
     return ( <div  className="auth-container ">
+         {loading && <Loading/>}
     <div className="img">
         <img src="/registerImg.svg" alt="Auth Image" className="w-100"/>
     </div>
@@ -77,8 +79,7 @@ function LogIn() {
 
             </div>
             <div className="d-flex align-items-center justify-content-between mb-3">
-                {loading?<div className="spinner-border text-danger" role="status"><span className="visually-hidden">Loading...</span></div>:
-                 <button type="submit" className="btn btn-danger px-5 py-2">Login</button>}
+                 <button type="submit" className="btn btn-danger px-5 py-2">Login</button>
                  <span  onClick={()=>navigate("/user/forgetPassword")} role="button"  className="text-danger">Forget Password?</span>
             </div>
             <div>

@@ -7,10 +7,11 @@ import useConfirm from '../../components/CustomToasty/WarningConfirm';
 import Pagination from '../../components/Pagination';
 import AddCategory from './../Add/AddCategory';
 import UpdateCategory from '../Update/UpdateCategory';
+import Loading from './../../components/Loading';
 
 
 function DashCategories() {
-    const {categoriesData,setCategoriesData,categoryPage,setCategoryPage}=useContext(AdminContext)
+    const {categoriesData,setCategoriesData,categoryPage,setCategoryPage,loading}=useContext(AdminContext)
     const [updateData,setUpdateData]=useState(null)
     const {deleteData}=useDeleteData()
  const confirm=useConfirm()
@@ -32,12 +33,13 @@ function DashCategories() {
     },[])
 
 return ( <div className="container">
+            {loading && <Loading/>}
         <div className="d-flex align-items-center justify-content-between my-5">
             <h2 className="section-title fs-3">All Category</h2>
            <AddCategory/>
         </div>
         <div className="overflow-x-auto">
-           { !categoriesData?.data ? <h1 className='text-center'>No Category found </h1> : <table class="table">
+           { !categoriesData?.data && !loading? <h1 className='text-center'>No Category found </h1> : <table class="table">
                 <thead>
                     <tr >
                         <th scope="col" style={{color:"var(--secondary-color)"}}>#</th>

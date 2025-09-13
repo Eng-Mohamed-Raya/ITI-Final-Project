@@ -12,13 +12,23 @@ export function GetData(url){
         const getData=async ()=>{
             setLoading(true)
             try {
-                   const {data}=await axios.get(url ,{
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      });
-                   setData(data)
+              if(userInfo){
+                
+                const {data}=await axios.get(url ,{
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${userInfo.token}`,
+                    },
+                  });
+                setData(data)
+              }else {
+                 const {data}=await axios.get(url ,{
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                  });
+                setData(data)
+              }
             } catch (err) {
                 setError(err.message)
             }finally{

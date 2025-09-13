@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { BASE_URL } from './../../context/ProductContext';
 import { AuthContext } from "../../context/AuthContext";
 import Modal from "../../components/Modal";
+import Loading from './../../components/Loading';
 function AddCategory() {
       const [category,setCategory]=useState({title:"",description:""})
     const [error,setError]=useState({title:"",description:""})
@@ -50,6 +51,7 @@ const handelSubmit=(e)=>{
     }
 
     return ( <>
+     {loading && <Loading/>}
     <Modal id="addCategory" title="Add Category" handelSendBtn={handelSubmit}>
          <div className=" px-3 px-lg-0" >
             

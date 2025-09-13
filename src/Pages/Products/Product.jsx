@@ -3,10 +3,11 @@ import Card from "../../components/ProductCard/Card";
 import { ProductContext } from "../../context/ProductContext";
 import Pagination from '../../components/Pagination';
 import SearchAndFilter from "../../components/SearchAndFilter";
+import Loading from './../../components/Loading';
 
 function Products() {
     
-    const {data,setData,productPage,setProductPage}=useContext(ProductContext);
+    const {data,setData,productPage,setProductPage,loading}=useContext(ProductContext);
      const [filter,setFilter]=useState("sortBy")
      const [search,setSearch]=useState("")
        const handelFilter=(e)=>{
@@ -46,6 +47,7 @@ function Products() {
         return ()=>{setProductPage(1)}
     },[])
     return ( <div className="container" style={{minHeight:"80vh"}}>
+         {loading && <Loading/>}
              <div className="d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-between my-5 gap-3 ">
             <h2 className="section-title my-5">Products</h2>
                  {/* search and filter  */}
@@ -54,7 +56,7 @@ function Products() {
            {data.data?  <div className="products-container">
                 {searching()?.length && filtered().length ?filtered()?.map((product)=><Card key={product._id} {...product}/>):<p className='text-center fs-1 fw-medium'> No results</p>}
              </div>
-             :<p  className='text-center fs-1 fw-medium'>No products found</p>}
+             : loading || <p  className='text-center fs-1 fw-medium'>No products found</p>}
          <div className='my-5'>
                 { searching()?.length>0 && filtered().length>0 && data.pages>1 && <Pagination pages={data.pages} setPage={setProductPage} page={productPage}/>}
             </div>

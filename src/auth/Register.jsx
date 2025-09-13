@@ -4,6 +4,7 @@ import {resgisterSchema} from "../Schema/Schema"
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loading from './../components/Loading';
 
 function Register() {
     const [user,setUser]=useState({name:"",email:"",gender:"male",address:"",image:"",password:"",confirmPassword:""})
@@ -49,6 +50,7 @@ const handelSubmit=(e)=>{
     }
     return ( 
     <div  className="auth-container align-items-start">
+         {loading && <Loading/>}
         <div className="img">
             <img src="/registerImg.svg" alt="Auth Image" className="w-100"/>
         </div>
@@ -94,8 +96,7 @@ const handelSubmit=(e)=>{
                     <small className="text-danger">{error.confirmPassword}</small>
                 </div>
                 <div className="d-flex align-items-center justify-content-between mb-3">
-                   {loading?<div className="spinner-border text-danger" role="status"><span className="visually-hidden">Loading...</span></div>:
-                 <button type="submit" className="btn btn-danger px-5 py-2">Sign Up</button>}
+                 <button type="submit" className="btn btn-danger px-5 py-2">Sign Up</button>
                     <div>
                         <span>have account ? </span>
                         <span onClick={()=>navigate("/user/login")} role="button"  className="text-danger">Login</span>
