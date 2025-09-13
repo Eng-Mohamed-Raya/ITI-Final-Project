@@ -7,12 +7,12 @@ function RatingStars({ rate }) {
 
   for (let i = 0; i < fullStars; i++) {
     stars.push(
-      <i className="fa-solid fa-star gold"></i>
+      <i key={i} className="fa-solid fa-star gold"></i>
     );
   }
   for (let i = 0; i < emptyStars; i++) {
     stars.push(
-       <i className="fa-solid fa-star gray"></i>
+       <i key={i+emptyStars+fullStars} className="fa-solid fa-star gray"></i>
     );
   }
 
