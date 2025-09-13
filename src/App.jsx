@@ -22,6 +22,7 @@ import DashOrders from "./Admin/DashOrders/DashOrders.jsx";
 import DashUsers from './Admin/DashUsers/DashUsers';
 import DashMessage from "./Admin/DashMessage/DashMessage.jsx";
 import DashCategories from "./Admin/DashCategories/DashCategories.jsx";
+import BrowesByCategory from "./Pages/BrowesByCategory/BrowesByCategory.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +33,7 @@ function App() {
               <Route path="contact" element={<Contact/>}/>
               <Route path="products" element={<Products/>}/>
               <Route path="products/:id" element={<ProductDetails/>}/>
+              <Route path="products/category/:id" element={<BrowesByCategory/>}/>
               <Route path="wishlist" element={<Wishlist/>}/>
               <Route path="cart" element={<h1>cart</h1>}/>
               <Route path="user">

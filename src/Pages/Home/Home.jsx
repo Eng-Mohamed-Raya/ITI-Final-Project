@@ -9,15 +9,16 @@ import Button from './../../components/Button';
 import { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import { useNavigate } from "react-router";
+import Loading from './../../components/Loading';
 
 
 function Home() {
     
-       const {data}=useContext(ProductContext);
+       const {data,loading}=useContext(ProductContext);
        const navigate=useNavigate()
 
     return (<div className="container">
-      
+      { loading && <Loading/>}
         <HomeVoucherSwiper/>
          <hr/>
         <div className="category-section "  style={{marginTop:"100px"}}>
