@@ -47,7 +47,6 @@ const handelSubmit=(e)=>{
                    
             }catch(e){
                 toast.error(`Error : ${e.response.data.message}`)
-                console.log(e)
 
             }finally{
                 setLoading(false)

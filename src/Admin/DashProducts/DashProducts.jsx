@@ -24,7 +24,6 @@ function DashProducts() {
           } else {
            setData((prev) =>({...prev,data:prev.data.filter((item) => item._id !== id)}));
             toast.success("Deleted successfully");
-            console.log(data);
           }
             };
 
@@ -33,7 +32,6 @@ function DashProducts() {
          },[])
            const handelFilter=(e)=>{
                 setFilterCategory(e.target.value)
-                console.log(filterCategory)
            }
            const handelSearch=(e)=>{
                 setSearch(e.target.value)

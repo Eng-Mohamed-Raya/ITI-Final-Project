@@ -19,7 +19,6 @@ function Wishlist() {
     } else {
       setWishlistData((prev) => prev.filter((item) => item._id !== id));
       toast.success("Deleted successfully");
-      console.log(data);
     }
       };
     return (<div className="container" style={{minHeight:"90vh"}}>

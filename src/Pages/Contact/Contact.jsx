@@ -24,7 +24,6 @@ function Contact() {
               setError(arrObj);
               return
               }
-              console.log("sssss")
             let addMsg=async()=>{
                 try {
                     await axios.post(`${BASE_URL}/contact`,contactData,{headers: {"Content-Type": "application/json"}})

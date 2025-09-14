@@ -21,7 +21,6 @@ function Card({_id,name,price,rate,images,quantity=1,children,topIcon,isInCart=f
   };
   const handelAddToCart=async (id)=>{
     const res = await postData(`${BASE_URL}/carts`, { productID:id,quantity: quantity});
-    console.log(res)
     if (res?.message) {
       toast.success(res.message);
       let tempArr=[...cartsData.data.products]

@@ -12,7 +12,6 @@ export default function HomeCategorySwiper() {
   const navigate=useNavigate()
 
   const {categoriesData}=useContext(AdminContext);
-  console.log(categoriesData)
   const categoryImage=(categoryTitle)=>{
     switch (categoryTitle) {
     case "Computers":

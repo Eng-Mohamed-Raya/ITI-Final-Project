@@ -21,7 +21,6 @@ function Profile() {
                const {data}= await axios.get(`${BASE_URL}/users/profile`,{
                 headers: { Authorization: `Bearer ${userInfo?.token}`}
             });
-            console.log(data.data)
                  setUser({...data.data,name:`${data.data.firstName} ${data.data.lastName}`})
             }catch(e){
                 toast.error(`Error : ${e.response.data.message}`)
@@ -47,7 +46,6 @@ function Profile() {
                  toast.success(`Updated Successfully`)
             }catch(e){
                 toast.error(`Error : ${e.response.data.message}`)
-                console.log(e)
             }finally{
                 setLoading(false)
             }

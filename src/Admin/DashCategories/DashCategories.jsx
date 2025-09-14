@@ -25,7 +25,6 @@ function DashCategories() {
         ...prev ,
         data:prev.data.filter((item) => item._id !== id)}));
           toast.success("Deleted successfully");
-          console.log(data);
         }
           };
             useEffect(()=>{

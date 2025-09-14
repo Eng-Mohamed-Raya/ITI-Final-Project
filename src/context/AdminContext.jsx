@@ -67,8 +67,6 @@ export const AdminProvider = ({ children }) => {
               default:
                 break;
             }
-          } else {
-            console.warn(`Request failed:`, result.reason.message);
           }
         });
       } catch (err) {

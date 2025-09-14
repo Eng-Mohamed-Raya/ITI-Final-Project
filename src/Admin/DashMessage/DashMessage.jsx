@@ -21,7 +21,6 @@ function DashMessage() {
         ...prev ,
         data:prev.data.filter((item) => item._id !== id)}));
       toast.success(data.message);
-      console.log(data);
     }
       };
 

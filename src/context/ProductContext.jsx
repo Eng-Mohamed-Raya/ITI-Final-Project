@@ -36,8 +36,6 @@ export const ProductProvider = ({ children }) => {
 
         if (wishlistRes.status === "fulfilled") {
           setWishlistData(wishlistRes.value.data.data.productId);
-        } else {
-          console.warn("Wishlist request failed:", wishlistRes.reason.message);
         }
       } catch (err) {
         setError(err.message);

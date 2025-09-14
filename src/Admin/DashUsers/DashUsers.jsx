@@ -17,7 +17,6 @@ function DashUsers() {
                    if (error) {
                  toast.error(error);
               } else {
-                 console.log(usersData.data);
                 setUsersData((prev) => ({
                         ...prev,
                         data: prev.data.filter((item) => item._id !== id)

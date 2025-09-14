@@ -17,11 +17,9 @@ function UpdateProduct({productData}) {
     const {categoriesData}=useContext(AdminContext)
     const {data,setData}=useContext(ProductContext)
 useEffect(() => {
-    console.log(productData)
   if (productData) {
       setImages([...productData.images])
     setProduct({...productData ,images:[...images]});
-    // console.log(product);
     
   }
 }, [productData]);

@@ -21,7 +21,6 @@ useEffect(() => {
       title: data.title || "",
       description: data.description || "",
     });
-    console.log(category);
     
   }
 }, [data]);
@@ -41,11 +40,9 @@ const handelSubmit=(e)=>{
         let updateData=async()=>{
             try{
                 setLoading(true)
-                console.log(category);
                let res= await axios.put(`${BASE_URL}/categories/${category._id}`,{title:category.title,description:category.description},{
             headers: { Authorization: `Bearer ${userInfo?.token}`}
           });
-          console.log("res: ",res)
             setCategoriesData((prev) =>({
             ...prev ,
             data:prev.data.map((item) =>{
