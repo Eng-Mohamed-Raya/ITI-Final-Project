@@ -10,6 +10,7 @@ export const AdminProvider = ({ children }) => {
   const [usersData, setUsersData] = useState([]);
   const [contactData, setContactData] = useState([]);
   const [ordersData, setOrdersData] = useState([]);
+  const [cartsData, setCartsData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { userInfo } = useContext(AuthContext);
@@ -34,6 +35,9 @@ export const AdminProvider = ({ children }) => {
           orders: axios.get(`${BASE_URL}/orders`, {
             headers: { Authorization: `Bearer ${userInfo.token}` },
           }),
+          carts: axios.get(`${BASE_URL}/carts`, {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }),
         };
 
         const results = await Promise.allSettled(
@@ -56,6 +60,9 @@ export const AdminProvider = ({ children }) => {
                 break;
               case "orders":
                 setOrdersData(result.value.data);
+                break;
+              case "carts":
+                setCartsData(result.value.data);
                 break;
               default:
                 break;
@@ -88,7 +95,8 @@ export const AdminProvider = ({ children }) => {
         ordersData,
         setOrdersData,
         usersPage,setUsersPage,
-        categoryPage,setCategoryPage
+        categoryPage,setCategoryPage,
+        cartsData, setCartsData
       }}
     >
       {children}

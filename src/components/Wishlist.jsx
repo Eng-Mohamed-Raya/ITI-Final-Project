@@ -28,7 +28,7 @@ function Wishlist() {
         <Button name="Add all to Cart"/>
        </div>
          <div className="products-container ">
-                      {loading ? <Loading/> : wishlistData ? wishlistData?.map((product)=><Card key={product._id} {...product}><i className="fa-solid fa-trash"  onClick={()=>handelDeleteFromWishlist(product._id)}></i></Card>)
+                      {loading ? <Loading/> : wishlistData ? wishlistData?.map((product)=><Card key={product._id} {...product} topIcon={<i className="fa-solid fa-trash"  onClick={()=>handelDeleteFromWishlist(product._id)}></i>}/>)
                        : <h1 className="center" style={{color:"var(--secondary-color)"}}> Your wishlist is empty.</h1>}   
           </div>
     </div>);

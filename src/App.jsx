@@ -24,6 +24,8 @@ import DashMessage from "./Admin/DashMessage/DashMessage.jsx";
 import DashCategories from "./Admin/DashCategories/DashCategories.jsx";
 import BrowesByCategory from "./Pages/BrowesByCategory/BrowesByCategory.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import Cart from "./Pages/Cart/cart.jsx";
+import DoneOrder from "./Pages/Cart/DoneOrder.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -37,7 +39,10 @@ function App() {
               <Route path="products/:id" element={<ProductDetails/>}/>
               <Route path="products/category/:id" element={<BrowesByCategory/>}/>
               <Route path="wishlist" element={<Wishlist/>}/>
-              <Route path="cart" element={<h1>cart</h1>}/>
+              <Route path="cart">
+                    <Route index element={<Cart/>}/>
+                    <Route path="done" element={<DoneOrder/>}/>
+              </Route>
               <Route path="user">
                   <Route path="register" element={<Register/>}/>
                   <Route path="login" element={<LogIn/>}/>

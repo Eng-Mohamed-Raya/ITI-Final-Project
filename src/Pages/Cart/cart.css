@@ -1,0 +1,10 @@
+
+@media screen and (max-width:992px){
+    .cart-container .box{
+        width: 100% !important;
+    }
+    .done-order img{
+        /* margin-top: 5rem !important; */
+        width:300px !important;
+    }
+}
