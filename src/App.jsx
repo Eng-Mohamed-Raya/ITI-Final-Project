@@ -24,7 +24,7 @@ import DashMessage from "./Admin/DashMessage/DashMessage.jsx";
 import DashCategories from "./Admin/DashCategories/DashCategories.jsx";
 import BrowesByCategory from "./Pages/BrowesByCategory/BrowesByCategory.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
-import Cart from "./Pages/Cart/cart.jsx";
+import Cart from "./Pages/Cart/Cart.jsx";
 import DoneOrder from "./Pages/Cart/DoneOrder.jsx";
 function App() {
   return (
