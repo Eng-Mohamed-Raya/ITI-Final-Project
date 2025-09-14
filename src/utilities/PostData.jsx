@@ -12,14 +12,12 @@ export function usePostData() {
   const postData = async (url, body) => {
     setLoading(true);
     try {
-        console.log(body)
       const res = await axios.post(url, JSON.stringify(body), {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${userInfo.token}`,
         },
       });
-      console.log(res)
       setData(res.data);
       return res.data; 
     } catch (err) {

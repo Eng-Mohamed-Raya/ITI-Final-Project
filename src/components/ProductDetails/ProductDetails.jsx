@@ -1,23 +1,25 @@
 import { GetData } from "../../utilities/GetData";
 import { BASE_URL, ProductContext } from "../../context/ProductContext";
-import Card from "../ProductCard/Card";
 import GetLocation from './../../utilities/GetLocation';
 import "./productDetails.css"
 import RatingStars from "../RatingStar";
 import { useContext, useEffect, useState } from "react";
 import { usePostData } from "../../utilities/PostData";
-import { toast } from "react-toastify/unstyled";
+import { toast } from "react-toastify";
 import { useParams } from "react-router";
 import Loading from "../Loading";
+import QuantityCounter from "../QuantityCounter";
+import { AdminContext } from "../../context/AdminContext";
 
 function ProductDetails() {
     const {id}=useParams()
     const {data,loading}=GetData(`${BASE_URL}/products/${id}`)
     const {name,description,price,stock,rate,images}=data.data || {}
     const [mainImage, setMainImage] = useState();
-    const [quantity,setQuantity]=useState(1)
     const {postData,error}=usePostData()
      const { setWishlistData } = useContext(ProductContext);
+          const { cartsData,setCartsData } = useContext(AdminContext);
+     
      useEffect(()=>{
         images && setMainImage(images[0])
      },[images])
@@ -29,16 +31,7 @@ function ProductDetails() {
         }
         return fill?.slice(0,3)
     }
-    const handelIncrement=()=>{
-        if(quantity < stock){
-            setQuantity(quantity + 1)
-        }
-    }
-    const handelDecrement=()=>{
-        if(quantity > 1){
-            setQuantity(quantity-1)
-        }
-    }
+  
      const handelAddToWishlist = async () => {
             
             const res = await postData(`${BASE_URL}/wishlist/`, { productId: [id] });
@@ -48,6 +41,17 @@ function ProductDetails() {
             }
       
     }
+     const handelAddToCart=async (id)=>{
+        const res = await postData(`${BASE_URL}/carts`, { productID:id,quantity: 1});
+        if (res?.message) {
+          toast.success(res.message);
+          let tempArr=[...cartsData.data.products]
+            tempArr.push({quantity:1,productID:{_id:id,name,price,rate,images}})
+          setCartsData({...cartsData,data:{...cartsData.data,products:tempArr}});
+        }else{
+            toast.error(error)
+        }
+      }
     return ( <div className="container" style={{minHeight:"80vh"}}>
          {loading && <Loading/>}
         <div className="container mt-5">
@@ -87,12 +91,8 @@ function ProductDetails() {
                 <span className="bg-light d-inline-block rounded-circle border"  style={{width:"15px",height:"15px"}}></span>
             </div>
             <div className="d-flex align-items-center  gap-3 my-2">
-               <div className="border d-flex justify-content-between align-items-center " style={{height:"40px",width:"160px"}} >
-                      <span className="h-100  d-flex justify-content-between align-items-center  border-end p-1 "  role="button" onClick={handelDecrement}><i className="fa-solid fa-minus fs-4"></i></span> 
-                     <span className="fs-4 p-1">{quantity}</span>
-                     <span className="h-100  d-flex justify-content-between align-items-center  bg-danger p-1 text-light" role="button" onClick={handelIncrement}> <i className="fa-solid fa-plus fs-4"></i></span> 
-               </div>
-                 <button className="btn btn-danger py-2" style={{width:"160px"}}>By Now</button>
+                <QuantityCounter maxValue={stock} width="160px"/>
+                 <button className="btn btn-danger py-2" style={{width:"160px"}} onClick={()=>handelAddToCart(id)}>By Now</button>
                <span className="cursor-pointer card-icon d-flex justify-content-center align-items-center rounded bg-white border" style={{width:"40px",height:"40px"}}><i className="fa-regular fa-heart fs-4" onClick={handelAddToWishlist}></i></span>
 
             </div>

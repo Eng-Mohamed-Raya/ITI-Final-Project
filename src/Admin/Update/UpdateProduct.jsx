@@ -57,6 +57,7 @@ const handelSubmit=(e)=>{
                 }return item
             })}));
                  setProduct({name:"",description:"",categoryId:"",price:0,stock:0,rate:1,images:[]})
+                     setImages(["","",""])
                  toast.success(`Updated Successfully`)
                    
             }catch(e){

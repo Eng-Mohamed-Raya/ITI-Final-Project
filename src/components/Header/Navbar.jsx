@@ -3,12 +3,15 @@ import { useContext } from "react";
 import { AuthContext } from './../../context/AuthContext';
 import LogoutButton from './../../auth/Logout';
 import { ProductContext } from "../../context/ProductContext";
+import { AdminContext } from "../../context/AdminContext";
 
 
 function Navbar() {
    
     const { userInfo } = useContext(AuthContext);
     const {wishlistData}=useContext(ProductContext)
+        const {cartsData}=useContext(AdminContext)
+    
    
     return ( 
        <nav className="navbar navbar-expand-lg bg-body-tertiary ">
@@ -54,7 +57,7 @@ function Navbar() {
                             <li className="nav-item">
                                 <NavLink className="nav-link cart-icon" to="/cart">
                                 <i className="fa-solid fa-cart-shopping"></i>
-                                <span className="position-absolute top-0 text-danger fw-bold">0</span>
+                                <span className="position-absolute top-0 text-danger fw-bold">{cartsData?.data?.products?.length||0}</span>
                                 </NavLink>
                             </li>
                             </>}
