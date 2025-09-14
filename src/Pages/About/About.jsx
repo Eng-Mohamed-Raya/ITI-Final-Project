@@ -5,7 +5,7 @@ import GetLocation from "../../utilities/GetLocation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {  Pagination, Autoplay } from "swiper/modules";
 import { aboutData } from './../../../DB/dbAbout';
-import "./About.css"
+import "./about.css"
 
 
 function About() {
