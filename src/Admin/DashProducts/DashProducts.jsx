@@ -69,7 +69,7 @@ function DashProducts() {
              <AddProduct/>
         </div>
         <div className="overflow-x-auto">
-           { !data?.data && !loading ? <h1 className='text-center'>No products found</h1> : <table class="table">
+           { !data?.data && !loading ? <h1 className='text-center'>No products found</h1> : <table className="table">
                 <thead>
                     <tr >
                         
@@ -98,7 +98,7 @@ function DashProducts() {
                                      <td>
                                         <i className="fa-solid fa-pen-to-square me-3 fs-5" role='button' style={{color:"var( --text-main-color)"}} data-bs-toggle="modal" data-bs-target="#updateProduct" onClick={()=>setUpdateData(product)}></i>
                                         <UpdateProduct productData={updateData} />
-                                        <i class="fa-solid fa-trash fs-5" role='button' style={{color:"var(--secondary-color)"}} onClick={()=>confirm({
+                                        <i className="fa-solid fa-trash fs-5" role='button' style={{color:"var(--secondary-color)"}} onClick={()=>confirm({
                                         onConfirm: ()=>handelDeleteProduct(product._id),
                                         message: "Do you really want to delete this Product?",
                                         confirmText: "Delete",

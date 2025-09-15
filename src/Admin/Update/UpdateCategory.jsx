@@ -13,7 +13,7 @@ function UpdateCategory({data}) {
     const [error,setError]=useState({title:"",description:""})
     const [loading,setLoading]=useState(false)
     const {userInfo}=useContext(AuthContext)
-    const {    categoriesData,setCategoriesData,}=useContext(AdminContext)
+    const {setCategoriesData,}=useContext(AdminContext)
 useEffect(() => {
   if (data) {
     setCategory({
@@ -40,7 +40,18 @@ const handelSubmit=(e)=>{
         let updateData=async()=>{
             try{
                 setLoading(true)
-               let res= await axios.put(`${BASE_URL}/categories/${category._id}`,{title:category.title,description:category.description},{
+               let tempObj = {};
+                if (category.title !== data.title) {
+                tempObj.title = category.title;
+                }
+                if (category.description !== data.description) {
+                tempObj.description = category.description;
+                }
+                if (Object.keys(tempObj).length === 0) {
+                toast.error("you did not update anything");
+                return;
+                }
+              await axios.put(`${BASE_URL}/categories/${category._id}`,tempObj,{
             headers: { Authorization: `Bearer ${userInfo?.token}`}
           });
             setCategoriesData((prev) =>({

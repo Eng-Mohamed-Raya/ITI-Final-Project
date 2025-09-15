@@ -15,13 +15,12 @@ function UpdateProduct({productData}) {
     const [loading,setLoading]=useState(false)
     const {userInfo}=useContext(AuthContext)
     const {categoriesData}=useContext(AdminContext)
-    const {data,setData}=useContext(ProductContext)
+    const {setData}=useContext(ProductContext)
 useEffect(() => {
   if (productData) {
       setImages([...productData.images])
-    setProduct({...productData ,images:[...images]});
-    
-  }
+    setProduct({...productData ,images:[...productData.images]});
+    }
 }, [productData]);
 
 const handelSubmit=(e)=>{

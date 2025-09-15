@@ -5,12 +5,30 @@ import { useDeleteData } from '../../utilities/DeleteData';
 import useConfirm from '../../components/CustomToasty/WarningConfirm';
 import { toast } from 'react-toastify';
 import Loading from '../../components/Loading';
+import axios from 'axios';
+import { AuthContext } from '../../context/AuthContext';
 
 function DashUsers() {
     const {usersData,setUsersData,usersPage,setUsersPage,loading}=useContext(AdminContext)
+    const {userInfo}=useContext(AuthContext)
+   const {deleteData}=useDeleteData()
    
-    
-       const {deleteData}=useDeleteData()
+   const handelChangeRole=(id,oldRole)=>{
+        const newRole = oldRole === "ADMIN" ? "USER" : "ADMIN";
+        const change=async()=>{
+               try {
+                    let res=await axios.put(`${BASE_URL}/users/changerole`,{id,newRole},{headers: { Authorization: `Bearer ${userInfo?.token}`}})
+                    toast.success(res.data?.message)
+                     setUsersData((prev) =>({
+                         ...prev,
+                        data:prev.data.map((user) =>user._id === id ? { ...user, role: newRole } : user)
+                    }));
+               } catch (e) {
+                     toast.error(`Error : ${e.response?.data?.message}`)
+               } 
+        }
+        change()
+        }
        const confirm=useConfirm()
            const handelDeleteUser = async (id) => {
                   const { data, error }  = await deleteData(`${BASE_URL}/users/${id}`);
@@ -24,7 +42,7 @@ function DashUsers() {
               toast.success(data.message);
               }
                 };
-                  useEffect(()=>{
+    useEffect(()=>{
         return ()=>{setUsersPage(1)}
     },[])
 
@@ -34,7 +52,7 @@ function DashUsers() {
         </div>
         <div className="overflow-x-auto">
              {loading && <Loading/>}
-           { ! usersData?.data && !loading? <h1 className='text-center'>No customers</h1> : <table class="table">
+           { ! usersData?.data && !loading? <h1 className='text-center'>No customers</h1> : <table className="table">
                 <thead>
                     <tr >
                         <th scope="col" style={{color:"var(--secondary-color)"}}>#</th>
@@ -60,8 +78,8 @@ function DashUsers() {
                                     <td>{user.gender}</td>
                                     <td>{user.role}</td>
                                     <td>
-                                        <i class="fa-solid fa-pen-to-square me-3 fs-5" role='button' style={{color:"var( --text-main-color)"}}></i>
-                                          <i class="fa-solid fa-trash fs-5" role='button' style={{color:"var(--secondary-color)"}} onClick={()=>confirm({
+                                        <i className="fa-solid fa-pen-to-square me-3 fs-5" role='button' style={{color:"var( --text-main-color)"}} onClick={()=>handelChangeRole(user._id,user.role)}></i>
+                                          <i className="fa-solid fa-trash fs-5" role='button' style={{color:"var(--secondary-color)"}} onClick={()=>confirm({
                                         onConfirm: ()=>handelDeleteUser(user._id),
                                         message: "Do you really want to delete this User?",
                                         confirmText: "Delete",

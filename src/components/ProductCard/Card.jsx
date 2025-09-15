@@ -30,7 +30,7 @@ function Card({_id,name,price,rate,images,quantity=1,children,topIcon,isInCart=f
   }
     return ( <div className="border product-card rounded-3  p-0" >
         <div className="product-img-container bg-body-secondary d-flex justify-content-center align-items-center position-relative" style={{height:"300px",overflow:"hidden"}}>
-                <img src={images?.length && images[0]} alt="" className=""/>
+                <img src={images?.length && images[0]} alt={`${name} image`} className=""/>
               <div className="position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
                 <span className="cursor-pointer card-icon d-flex justify-content-center align-items-center rounded-circle bg-white" style={{width:"30px",height:"30px"}}>{topIcon||<i className="fa-regular fa-heart" onClick={()=>handelAddToWishlist(_id)}></i>}</span>
                 <span className="cursor-pointer card-icon d-flex justify-content-center align-items-center rounded-circle bg-white" style={{width:"30px",height:"30px"}}><i className="fa-solid fa-eye"  onClick={()=>{navigate(`/products/${_id}`) }}></i></span>

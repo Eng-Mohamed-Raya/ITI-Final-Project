@@ -11,13 +11,13 @@ import { AdminContext } from "../../context/AdminContext";
 import Modal from "../../components/Modal";
 import Loading from "../../components/Loading";
 function AddProduct() {
-      const [product,setProduct]=useState({name:"",description:"",categoryId:"",price:0,stock:0,rate:1,images:[]})
+      const [product,setProduct]=useState({name:"",description:"",categoryId:"",price:0,stock:0,rate:"1",images:[]})
       const [images,setImages]=useState(["","",""])
     const [error,setError]=useState({name:"",description:"",price:"",rate:"",stock:"",images:""})
     const [loading,setLoading]=useState(false)
     const {userInfo}=useContext(AuthContext)
     const {categoriesData}=useContext(AdminContext)
-
+    const {setData}=useContext(ProductContext)
 const handelSubmit=(e)=>{
         e.preventDefault();
         let check=AddProductSchema.safeParse(product)
@@ -37,16 +37,19 @@ const handelSubmit=(e)=>{
         let postData=async()=>{
             try{
                 setLoading(true)
-               await axios.post(`${BASE_URL}/products`,product,{
+               let res=await axios.post(`${BASE_URL}/products`,product,{
             headers: { Authorization: `Bearer ${userInfo?.token}`}
-          });
-          
+          });         
+             const category = categoriesData?.data?.find(item => item._id === product.categoryId);
+            setData((prev) =>({
+            ...prev ,
+            data:[...prev.data,{...res.data.data,categoryId:{_id:product.categoryId,title:category.title}}]}));
                  setProduct({name:"",description:"",categoryId:"",price:0,stock:0,images:["","",""]})
                  setImages(["","",""])
-                 toast.success(`Added Successfully`)
+                 toast.success(res.data?.message)
                    
             }catch(e){
-                toast.error(`Error : ${e.response.data.message}`)
+                toast.error(`Error : ${e.response?.data?.message}`)
 
             }finally{
                 setLoading(false)

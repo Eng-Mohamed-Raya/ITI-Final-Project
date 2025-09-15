@@ -7,11 +7,13 @@ import { BASE_URL } from './../../context/ProductContext';
 import { AuthContext } from "../../context/AuthContext";
 import Modal from "../../components/Modal";
 import Loading from './../../components/Loading';
+import { AdminContext } from "../../context/AdminContext";
 function AddCategory() {
       const [category,setCategory]=useState({title:"",description:""})
     const [error,setError]=useState({title:"",description:""})
     const [loading,setLoading]=useState(false)
     const {userInfo}=useContext(AuthContext)
+    const {setCategoriesData}=useContext(AdminContext)
 
 const handelSubmit=(e)=>{
         e.preventDefault();
@@ -28,12 +30,14 @@ const handelSubmit=(e)=>{
             try{
                 
                 setLoading(true)
-                await axios.post(`${BASE_URL}/categories`,category,{
+                let res=await axios.post(`${BASE_URL}/categories`,category,{
             headers: { Authorization: `Bearer ${userInfo?.token}`}
           });
-         
+             setCategoriesData((prev) =>({
+            ...prev ,
+            data:[...prev.data,res.data.data]}));
                  setCategory({title:"",description:""})
-                 toast.success(`Added Successfully`)
+                 toast.success(res.data.message)
                    
             }catch(e){
                 toast.error(`Error : ${e.response?.data?.messages}`)

@@ -31,7 +31,7 @@ function DashMessage() {
         </div>
         <div className="overflow-x-auto">
             {!contactData?.data && !loading? <h1 className='text-center'>Don't have a messages</h1> :
-            <table class="table">
+            <table className="table">
             <thead>
                 <tr >
                     <th scope="col" style={{color:"var(--secondary-color)"}}>#</th>
@@ -45,7 +45,7 @@ function DashMessage() {
             <tbody>
                 {
                     contactData?.data?.map((user,index)=>{
-                        return <tr className='align-middle'>
+                        return <tr className='align-middle' key={user._id}>
                             <th scope="row" className="text-danger">{index+1}</th>
                                 <td>
                                     {user.userName}
@@ -54,7 +54,7 @@ function DashMessage() {
                                 <td>{user.phone}</td>
                                 <td>{user.message}</td>
                                 <td>
-                                    <i class="fa-solid fa-trash fs-5" role='button' style={{color:"var(--secondary-color)"}} onClick={()=>confirm({
+                                    <i className="fa-solid fa-trash fs-5" role='button' style={{color:"var(--secondary-color)"}} onClick={()=>confirm({
                                         onConfirm: ()=>handelDeleteMessage(user._id),
                                         message: "Do you really want to delete this Message?",
                                         confirmText: "Delete",

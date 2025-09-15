@@ -27,10 +27,12 @@
     height: 90%;
 }
 .large-image{
-    height: 100% !important;
+    height: 600px !important;
 }
 .large-image img{
-      height: 90% !important;
+    height: 90% !important;
+    width:  90% !important;
+    object-fit: contain;
 }
 .product-details-content{
     width: 35% !important;

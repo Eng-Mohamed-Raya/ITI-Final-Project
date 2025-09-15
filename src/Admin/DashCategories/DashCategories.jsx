@@ -16,11 +16,10 @@ function DashCategories() {
     const {deleteData}=useDeleteData()
  const confirm=useConfirm()
      const handelDeleteCategory = async (id) => {
-            const { data, error }  = await deleteData(`${BASE_URL}/categories/${id}`);
+            const { error }  = await deleteData(`${BASE_URL}/categories/${id}`);
              if (error) {
            toast.error(error);
         } else {
-        //   setCategoriesData((prev) =>prev?.filter((item) => item._id !== id));
            setCategoriesData((prev) =>({
         ...prev ,
         data:prev.data.filter((item) => item._id !== id)}));
@@ -38,7 +37,7 @@ return ( <div className="container">
            <AddCategory/>
         </div>
         <div className="overflow-x-auto">
-           { !categoriesData?.data && !loading? <h1 className='text-center'>No Category found </h1> : <table class="table">
+           { !categoriesData?.data && !loading? <h1 className='text-center'>No Category found </h1> : <table className="table">
                 <thead>
                     <tr >
                         <th scope="col" style={{color:"var(--secondary-color)"}}>#</th>
@@ -59,7 +58,7 @@ return ( <div className="container">
                                     <td>
                                         <i className="fa-solid fa-pen-to-square me-3 fs-5" role='button' style={{color:"var( --text-main-color)"}} data-bs-toggle="modal" data-bs-target="#updateCategory" onClick={()=>setUpdateData(category)}></i>
                                         <UpdateCategory data={updateData} />
-                                       <i class="fa-solid fa-trash fs-5" role='button' style={{color:"var(--secondary-color)"}} onClick={()=>confirm({
+                                       <i className="fa-solid fa-trash fs-5" role='button' style={{color:"var(--secondary-color)"}} onClick={()=>confirm({
                                         onConfirm: ()=>handelDeleteCategory(category._id),
                                         message: "Do you really want to delete this Category?",
                                         confirmText: "Delete",
