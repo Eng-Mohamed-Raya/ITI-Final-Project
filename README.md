@@ -1,12 +1,76 @@
-# React + Vite
+# 🛒 E-commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a **Frontend E-commerce Website** built with **React**.  
+It was developed as a **Graduation Project for ITI Summer Training**.  
 
-Currently, two official plugins are available:
+It provides a full shopping experience for **users** and an **admin dashboard** for managing the website.  
+👉 Live Demo: [Visit Website](https://iti-final-project-ten.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🔑 Default Admin Account
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Email:** mohamedyasserraya@gmail.com  
+- **Password:** 123456  
+
+---
+
+## 🔑 Default User Account
+
+- **Email:** medoaboraya2@gmail.com  
+- **Password:** 123456  
+
+---
+
+## 🚀 Features
+
+### 🌍 Public (Before Login)
+- View **Home, Products, About, Contact**
+- Browse products by **Category**
+- View **Product Details**
+- Search and filter products
+
+### 👤 User (After Login)
+- Register with **email confirmation**  
+- Login with **email & password**
+- Manage **Cart** (Add, Remove, Update quantity)
+- Manage **Wishlist** (Add, Remove)
+- View and update **Profile**
+- Responsive design across all devices
+
+### 🛠️ Admin
+- Login with **Admin account**
+- Access **Dashboard** with statistics
+- Manage:
+  - **Products** → CRUD operations
+  - **Categories** → CRUD operations
+  - **Customers** → View users, change roles, delete
+  - **Messages** → View & delete from Contact page
+- Search & filter for products and categories
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** React, React Router, Context API, Axios, Bootstrap, Swiper, Zod, React Toastify  
+- **Deployment:** Vercel  
+- **Other Tools:** ESLint, Vite  
+
+---
+
+## 📦 Installation & Usage
+
+Follow these steps to run the project locally:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Eng-Mohamed-Raya/ITI-Final-Project.git
+cd ITI-Final-Project
+
+# 2. Install dependencies
+npm install
+
+# 3. Run the project in development mode
+npm run dev
+
+# 4. Open in your browser
+http://localhost:5173
