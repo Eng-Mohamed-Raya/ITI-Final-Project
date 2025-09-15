@@ -96,7 +96,7 @@ const handelSubmit=(e)=>{
                     <small className="text-danger">{error.confirmPassword}</small>
                 </div>
                 <div className="d-flex align-items-center justify-content-between mb-3">
-                 <button type="submit" className="btn btn-danger px-5 py-2">Sign Up</button>
+                 <button type="submit" className="btn btn-danger px-2 px-sm-5 py-2">Sign Up</button>
                     <div>
                         <span>have account ? </span>
                         <span onClick={()=>navigate("/user/login")} role="button"  className="text-danger">Login</span>
