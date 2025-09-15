@@ -27,7 +27,7 @@ export default function HomeCategorySwiper() {
     case "Cameras":
       return "/homeImg/Category-Camera.svg"
     default:
-      return "/public/homeImg/responsive.png"
+      return "/homeImg/responsive.png"
      
   }
 }

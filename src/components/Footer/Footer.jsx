@@ -59,8 +59,8 @@ function Footer() {
             <div className="d-flex align-items-start gap-3">
                 <img src="/Qr Code.svg"/>
                 <div>
-                    <p><Link to="/" > <img src="/public/png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.svg"/></Link></p>
-                    <p><Link to="/"> <img src="/public/download-appstore.svg"/></Link></p>
+                    <p><Link to="/" > <img src="/png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.svg"/></Link></p>
+                    <p><Link to="/"> <img src="/download-appstore.svg"/></Link></p>
                 </div>
             </div>
             <div className="d-flex  gap-3">

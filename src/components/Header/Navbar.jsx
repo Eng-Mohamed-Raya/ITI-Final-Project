@@ -45,7 +45,7 @@ function Navbar() {
                     <div className=" d-lg-flex ms-auto ">
 
                         <form className="d-flex position-relative mb-3 mb-lg-0" role="search">
-                            <input className="form-control me-2 pe-5" type="text" placeholder="What are you looking for?" aria-label="Search"/>
+                            <input className="form-control me-2 pe-5" type="text" placeholder="Type to search" aria-label="Search"/>
                             <i className="fa-solid fa-magnifying-glass position-absolute" style={{right:"15px",top:"12px"}}></i>
                         </form>
                         <ul className=" navbar-nav mb-2 mb-lg-0 flex-row gap-5 gap-lg-0">
