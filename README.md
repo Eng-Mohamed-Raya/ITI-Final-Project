@@ -31,7 +31,9 @@ It provides a full shopping experience for **users** and an **admin dashboard** 
 - Search and filter products
 
 ### 👤 User (After Login)
-- Register with **email confirmation**  
+- Register with **email confirmation** 
+  - After registering, you will receive a message in your email containing a confirmation link.  
+    Open this link, then go to the login page and sign in with your email & password. 
 - Login with **email & password**
 - Manage **Cart** (Add, Remove, Update quantity)
 - Manage **Wishlist** (Add, Remove)
